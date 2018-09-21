@@ -4,6 +4,7 @@
 #include "adc.h"
 #include "encoders.h"
 #include "motors.h"
+#include "sensors.h"
 
 int main(void) {
     SystemInit();
@@ -16,6 +17,7 @@ int main(void) {
     RCC_Config();
     encodersConfig();
     motorsConfig();
+    sensorsConfig();
 
     while (1) {
     }
