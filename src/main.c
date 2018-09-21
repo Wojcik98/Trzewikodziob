@@ -3,6 +3,7 @@
 #include "rcc.h"
 #include "adc.h"
 #include "encoders.h"
+#include "motors.h"
 
 int main(void) {
     SystemInit();
@@ -14,6 +15,7 @@ int main(void) {
     ADC_Config();
     RCC_Config();
     encodersConfig();
+    motorsConfig();
 
     while (1) {
     }
