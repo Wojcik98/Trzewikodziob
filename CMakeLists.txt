@@ -12,7 +12,6 @@ set(OBJCOPY arm-none-eabi-objcopy)
 set(OBJDUMP arm-none-eabi-objdump)
 set(SIZE arm-none-eabi-size)
 
-
 SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F401RBTx_FLASH.ld)
 
 #Uncomment for hardware floating point
