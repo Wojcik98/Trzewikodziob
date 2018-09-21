@@ -15,15 +15,15 @@ void encodersConfig() {
 
     // Configure GPIO
     GPIO_StructInit(&GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin = ENC_L_A_PIN | ENC_L_B_PIN | ENC_R_A_PIN | ENC_R_B_PIN;
+    GPIO_InitStructure.GPIO_Pin = ENC_L_A_Pin | ENC_L_B_Pin | ENC_R_A_Pin | ENC_R_B_Pin;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    GPIO_Init(ENC_PORT, &GPIO_InitStructure);
+    GPIO_Init(ENC_Port, &GPIO_InitStructure);
 
     // Configure interrupts
     // Connect EXTI Lines to pins
-    SYSCFG_EXTILineConfig(ENC_PORT_SOURCE, ENC_L_A_PIN_SOURCE);
-    SYSCFG_EXTILineConfig(ENC_PORT_SOURCE, ENC_R_A_PIN_SOURCE);
+    SYSCFG_EXTILineConfig(ENC_PortSource, ENC_L_A_PinSource);
+    SYSCFG_EXTILineConfig(ENC_PortSource, ENC_R_A_PinSource);
 
     // Init NVIC
     NVIC_InitStructure.NVIC_IRQChannel = EXTI9_5_IRQn;
@@ -38,10 +38,10 @@ void encodersConfig() {
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
 
     // Left encoder, input A
-    EXTI_InitStructure.EXTI_Line = ENC_L_A_LINE;
+    EXTI_InitStructure.EXTI_Line = ENC_L_A_Line;
     EXTI_Init(&EXTI_InitStructure);
 
     // Right encoder, input A
-    EXTI_InitStructure.EXTI_Line = ENC_R_A_LINE;
+    EXTI_InitStructure.EXTI_Line = ENC_R_A_Line;
     EXTI_Init(&EXTI_InitStructure);
 }
