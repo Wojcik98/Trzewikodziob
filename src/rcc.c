@@ -17,8 +17,6 @@ void RCC_Config(void) {
     // TIM
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-    // EXTI
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 
     if (SysTick_Config(SystemCoreClock/1000)){
         while (1);
