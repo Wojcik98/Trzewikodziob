@@ -1,7 +1,6 @@
 #include "main.h"
 #include "gpio.h"
 #include "rcc.h"
-#include "adc.h"
 #include "encoders.h"
 #include "motors.h"
 #include "sensors.h"
@@ -13,7 +12,6 @@ int main(void) {
     }
 
     GPIO_Config();
-    ADC_Config();
     RCC_Config();
     encodersConfig();
     motorsConfig();
