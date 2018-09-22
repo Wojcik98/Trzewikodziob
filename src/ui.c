@@ -1,10 +1,20 @@
 //
-// Created by Wojcik98 on 04.09.18.
+// Created by Wojcik98 on 22.09.18.
 //
 
+#include <stm32f4xx_rcc.h>
 #include "stm32f4xx_gpio.h"
-#include "gpio.h"
-#include "main.h"
+#include "ui.h"
+
+static void GPIO_Config(void);
+
+static void RCC_Config(void);
+
+void uiConfig() {
+    GPIO_Config();
+    RCC_Config();
+}
+
 
 void GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -23,7 +33,7 @@ void GPIO_Config(void) {
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    GPIO_InitStructure.GPIO_Pin = LED_2_Pin | LED_E_Pin | LED_1_Pin | LED_S_Pin;
+    GPIO_InitStructure.GPIO_Pin = LED_1_Pin | LED_2_Pin;
     GPIO_Init(GPIOB, &GPIO_InitStructure);
 
     GPIO_StructInit(&GPIO_InitStructure);
@@ -33,11 +43,10 @@ void GPIO_Config(void) {
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
     GPIO_InitStructure.GPIO_Pin = LED_3_Pin;
     GPIO_Init(GPIOC, &GPIO_InitStructure);
+}
 
-    // EXTI
-    GPIO_StructInit(&GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
+void RCC_Config() {
+    // Enable GPIO clocks
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 }

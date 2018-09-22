@@ -1,9 +1,8 @@
 #include "main.h"
-#include "gpio.h"
-#include "rcc.h"
 #include "encoders.h"
 #include "motors.h"
 #include "sensors.h"
+#include "ui.h"
 
 int main(void) {
     SystemInit();
@@ -11,11 +10,10 @@ int main(void) {
         while (1);
     }
 
-    GPIO_Config();
-    RCC_Config();
     encodersConfig();
     motorsConfig();
     sensorsConfig();
+    uiConfig();
 
     while (1) {
     }
