@@ -21,6 +21,6 @@
 #define ENC_L_A_Line EXTI_Line6
 #define ENC_R_A_Line EXTI_Line8
 
-void encodersConfig();
+void encodersConfig(void);
 
 #endif

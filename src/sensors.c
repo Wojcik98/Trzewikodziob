@@ -3,8 +3,8 @@
 //
 
 #include <stm32f4xx_rcc.h>
-#include "stm32f4xx_adc.h"
-#include "stm32f4xx_gpio.h"
+#include <stm32f4xx_adc.h>
+#include <stm32f4xx_gpio.h>
 #include "sensors.h"
 
 static void GPIO_Config(void);

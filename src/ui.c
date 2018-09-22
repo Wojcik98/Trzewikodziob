@@ -3,7 +3,7 @@
 //
 
 #include <stm32f4xx_rcc.h>
-#include "stm32f4xx_gpio.h"
+#include <stm32f4xx_gpio.h>
 #include "ui.h"
 
 static void GPIO_Config(void);

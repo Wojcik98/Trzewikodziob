@@ -6,7 +6,7 @@
 
 int main(void) {
     SystemInit();
-    if (SysTick_Config(SystemCoreClock/1000)){
+    if (SysTick_Config(SystemCoreClock / 1000)) {
         while (1);
     }
 
