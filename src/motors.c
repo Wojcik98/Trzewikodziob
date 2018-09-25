@@ -13,9 +13,13 @@ static void RCC_Config(void);
 static void TIM_Config(void);
 
 void motorsConfig() {
+    RCC_Config();
     GPIO_Config();
     TIM_Config();
-    RCC_Config();
+    M_L_FORWARD;
+    PWM_L = 0;
+    M_R_FORWARD;
+    PWM_R = 0;
 }
 
 void GPIO_Config() {
