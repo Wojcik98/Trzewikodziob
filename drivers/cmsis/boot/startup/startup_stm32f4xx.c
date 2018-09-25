@@ -408,10 +408,7 @@ void Default_Reset_Handler(void)
   */
 static void Default_Handler(void)
 {
-	/* Go into an infinite loop. */
-	while (1)
-	{
-	}
+	/* Do nothing */
 }
 
 /*********************** (C) COPYRIGHT 2009 Coocox ************END OF FILE*****/

@@ -17,6 +17,8 @@ static void EXTI_Config(void);
 
 static void RCC_Config(void);
 
+volatile s32 enkL = 0, enkR = 0;
+
 void encodersConfig() {
     RCC_Config();
     GPIO_Config();
@@ -67,4 +69,23 @@ static void EXTI_Config() {
 void RCC_Config() {
     // Enable EXTI clock
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+}
+
+void EXTI9_5_IRQHandler(void) {
+    if (EXTI_GetITStatus(EXTI_Line6) != RESET) {    // Input A Forward-Counterclockwise, B first
+        if (GPIOB->IDR & GPIO_Pin_5) {    //if B-h, then A-h => forward
+            ++enkL;
+        } else {                            //if B-l, then A-h => backward
+            --enkL;
+        }
+        EXTI->PR = EXTI_Line6;
+    }
+    if (EXTI_GetITStatus(EXTI_Line8) != RESET) {    //Input A Forward-Clockwise, A first
+        if (GPIOB->IDR & GPIO_Pin_7) {    //if B-h, then A-h => backward
+            --enkR;
+        } else {                            //if B-l, then A-h => forward
+            ++enkR;
+        }
+        EXTI->PR = EXTI_Line8;
+    }
 }

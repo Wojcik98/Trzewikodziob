@@ -21,6 +21,7 @@
 #define ENC_L_A_Line EXTI_Line6
 #define ENC_R_A_Line EXTI_Line8
 
+extern volatile s32 enkL, enkR;
 void encodersConfig(void);
 
 #endif
