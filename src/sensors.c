@@ -14,9 +14,9 @@ static void ADC_Config(void);
 static void RCC_Config(void);
 
 void sensorsConfig() {
+    RCC_Config();
     GPIO_Config();
     ADC_Config();
-    RCC_Config();
 }
 
 static void GPIO_Config(void) {

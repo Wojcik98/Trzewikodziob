@@ -11,8 +11,8 @@ static void GPIO_Config(void);
 static void RCC_Config(void);
 
 void uiConfig() {
-    GPIO_Config();
     RCC_Config();
+    GPIO_Config();
 }
 
 

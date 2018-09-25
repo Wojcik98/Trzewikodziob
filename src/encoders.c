@@ -18,10 +18,10 @@ static void EXTI_Config(void);
 static void RCC_Config(void);
 
 void encodersConfig() {
+    RCC_Config();
     GPIO_Config();
     NVIC_Config();
     EXTI_Config();
-    RCC_Config();
 }
 
 void GPIO_Config() {
