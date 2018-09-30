@@ -1,5 +1,6 @@
 #include "main.h"
 #include "encoders.h"
+#include "menu.h"
 #include "motors.h"
 #include "sensors.h"
 #include "ui.h"
@@ -19,6 +20,7 @@ int main(void) {
     LED_3_OFF;
 
     while (1) {
+        menu();
     }
 }
 

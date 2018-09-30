@@ -98,5 +98,5 @@ void setSpeed(s32 speed) {
 }
 
 void rotate(s32 rotation) {
-    targetSRot += rotation;
+    targetSRot = zadSRot + rotation;
 }
