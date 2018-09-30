@@ -5,6 +5,8 @@
 #ifndef TRZEWIKODZIOB_SENSORS_H
 #define TRZEWIKODZIOB_SENSORS_H
 
+#include <stm32f4xx.h>
+
 #define S0 14
 #define S1 7
 #define S2 6
@@ -18,8 +20,11 @@
 #define S10 11
 #define S11 10
 #define ENH 3
-#define BAT 9
+#define BATT 9
 
 void sensorsConfig(void);
+u16 readADC(u8 channel);
+u16 getBatt(void);
+void getSensors(u16* sensors);
 
 #endif //TRZEWIKODZIOB_SENSORS_H

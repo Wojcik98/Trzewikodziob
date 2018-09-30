@@ -66,3 +66,32 @@ static void RCC_Config(void) {
     // Enable ADC clock
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
 }
+
+u16 readADC(u8 channel) {
+    ADC_RegularChannelConfig(ADC1, channel, 1, ADC_SampleTime_56Cycles);
+    // Start the conversion
+    ADC_SoftwareStartConv(ADC1);
+    // Wait until conversion completion
+    while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET);
+    // Get the conversion value
+    return ADC_GetConversionValue(ADC1);
+}
+
+u16 getBatt() {
+    return readADC(BATT);
+}
+
+void getSensors(u16* sensors) {
+    sensors[0] = readADC(S0);
+    sensors[1] = readADC(S1);
+    sensors[2] = readADC(S2);
+    sensors[3] = readADC(S3);
+    sensors[4] = readADC(S4);
+    sensors[5] = readADC(S5);
+    sensors[6] = readADC(S6);
+    sensors[7] = readADC(S7);
+    sensors[8] = readADC(S8);
+    sensors[9] = readADC(S9);
+    sensors[10] = readADC(S10);
+    sensors[11] = readADC(S11);
+}
