@@ -6,9 +6,7 @@
 
 int main(void) {
     SystemInit();
-    if (SysTick_Config(SystemCoreClock / 1000)) {
-        while (1);
-    }
+    setClockInterrupt();
 
     encodersConfig();
     motorsConfig();
@@ -20,5 +18,12 @@ int main(void) {
     LED_3_OFF;
 
     while (1) {
+    }
+}
+
+void setClockInterrupt() {
+    // Set interrupt every 1ms
+    if (SysTick_Config(SystemCoreClock / 1000)) {
+        while (1);
     }
 }
