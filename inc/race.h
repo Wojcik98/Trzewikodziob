@@ -11,4 +11,6 @@ void race(void);
 void updateError(void);
 bool isLineInCenter(void);
 
+extern volatile bool isRace;
+
 #endif //TRZEWIKODZIOB_RACE_H

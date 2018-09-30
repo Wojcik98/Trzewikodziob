@@ -11,6 +11,8 @@
 #include "ui.h"
 #include "race.h"
 
+volatile bool isRace = false;
+
 u16 sensors[12];
 bool sensBool[12];
 
@@ -18,12 +20,14 @@ s8 weights[12] = {-6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6};    // TODO read fro
 s32 speed = (953635<<1);    // 1m/s, TODO read from settings
 
 void race() {
+    isRace = true;
     while (1) {  // TODO end condition
         updateError();
         if (getBatt() < BATT_THRESHOLD) {
             LED_2_ON;
         }
     }
+    isRace = false;
 }
 
 void updateError() {

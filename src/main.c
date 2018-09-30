@@ -1,3 +1,5 @@
+#include <race.h>
+#include <pid.h>
 #include "main.h"
 #include "encoders.h"
 #include "menu.h"
@@ -33,4 +35,8 @@ void setClockInterrupt() {
 
 void SysTick_Handler(){
     delayDecrement();
+
+    if (isRace) {
+        pid();
+    }
 }
