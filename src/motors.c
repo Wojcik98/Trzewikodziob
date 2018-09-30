@@ -4,6 +4,7 @@
 
 #include <stm32f4xx_rcc.h>
 #include <stm32f4xx_tim.h>
+#include <math.h>
 #include "motors.h"
 
 static void GPIO_Config(void);
@@ -20,6 +21,31 @@ void motorsConfig() {
     PWM_L = 0;
     M_R_FORWARD;
     PWM_R = 0;
+}
+
+void setPwmL(s32 pwm) {
+    if (pwm > 0) {
+        M_L_FORWARD;
+    } else {
+        M_L_BACKWARD;
+    }
+
+    PWM_L = (u32) abs(pwm);
+}
+
+void setPwmR(s32 pwm) {
+    if (pwm > 0) {
+        M_R_FORWARD;
+    } else {
+        M_R_BACKWARD;
+    }
+
+    PWM_R = (u32) abs(pwm);
+}
+
+void setPwm(s32 pwmL, s32 pwmR) {
+    setPwmL(pwmL);
+    setPwmR(pwmR);
 }
 
 void GPIO_Config() {

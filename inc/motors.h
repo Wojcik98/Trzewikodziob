@@ -46,5 +46,8 @@
 #define PWM_PERIOD ((1<<16)-1)
 
 void motorsConfig(void);
+void setPwmL(s32 pwm);
+void setPwmR(s32 pwm);
+void setPwm(s32 pwmL, s32 pwmR);
 
 #endif //TRZEWIKODZIOB_MOTORS_H
