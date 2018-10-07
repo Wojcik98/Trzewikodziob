@@ -1,7 +1,7 @@
 #include <race.h>
 #include <pid.h>
-#include "main.h"
 #include "encoders.h"
+#include "main.h"
 #include "menu.h"
 #include "motors.h"
 #include "sensors.h"

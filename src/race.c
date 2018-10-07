@@ -4,14 +4,14 @@
 
 #include <stm32f4xx.h>
 #include <stdbool.h>
-#include "motors.h"
 #include "math.h"
-#include "pid.h"
-#include "sensors.h"
 #include "menu.h"
-#include "ui.h"
+#include "motors.h"
+#include "pid.h"
 #include "race.h"
+#include "sensors.h"
 #include "settings.h"
+#include "ui.h"
 
 volatile bool isRace = false;
 
