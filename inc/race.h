@@ -7,6 +7,9 @@
 
 #include <stdbool.h>
 
+#define LINE_CENTER_BEGIN 3
+#define LINE_CENTER_END 8
+
 void race(void);
 void updateError(void);
 bool isLineInCenter(void);

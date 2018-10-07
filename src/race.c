@@ -66,7 +66,7 @@ void updateError() {
 
 bool isLineInCenter() {
     bool result = false;
-    for (u8 i = 3; i <= 8; i++) {
+    for (u8 i = LINE_CENTER_BEGIN; i <= LINE_CENTER_END; i++) {
         result = result || sensBool[i];
     }
     return result;

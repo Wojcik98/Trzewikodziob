@@ -17,10 +17,6 @@ int main(void) {
     sensorsConfig();
     uiConfig();
 
-    LED_1_OFF;
-    LED_2_OFF;
-    LED_3_OFF;
-
     while (1) {
         menu();
     }

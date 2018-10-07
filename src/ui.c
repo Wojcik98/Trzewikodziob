@@ -14,6 +14,10 @@ static void RCC_Config(void);
 void uiConfig() {
     RCC_Config();
     GPIO_Config();
+
+    LED_1_OFF;
+    LED_2_OFF;
+    LED_3_OFF;
 }
 
 void blink(u8 led, u16 time) {
