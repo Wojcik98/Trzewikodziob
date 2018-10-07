@@ -9,14 +9,8 @@
 
 void menu() {
     if (SW_1) {
-        LED_1_ON;
-        delay(200);
-        LED_1_OFF;
-
+        blink(1, 500);
         race();
-
-        LED_3_ON;
-        delay(200);
-        LED_3_OFF;
+        blink(3, 500);
     }
 }

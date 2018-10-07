@@ -4,6 +4,7 @@
 
 #include <stm32f4xx_rcc.h>
 #include <stm32f4xx_gpio.h>
+#include "utils.h"
 #include "ui.h"
 
 static void GPIO_Config(void);
@@ -15,6 +16,30 @@ void uiConfig() {
     GPIO_Config();
 }
 
+void blink(u8 led, u16 time) {
+    switch (led) {
+        case 1:
+            LED_1_ON;
+            delay(time);
+            LED_1_OFF;
+            delay(time);
+            break;
+        case 2:
+            LED_2_ON;
+            delay(time);
+            LED_2_OFF;
+            delay(time);
+            break;
+        case 3:
+            LED_3_ON;
+            delay(time);
+            LED_3_OFF;
+            delay(time);
+            break;
+        default:
+            break;
+    }
+}
 
 void GPIO_Config(void) {
     GPIO_InitTypeDef GPIO_InitStructure;

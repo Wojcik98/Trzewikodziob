@@ -42,5 +42,6 @@
 #define SW_5 (!(SW_5_Port->IDR & SW_5_Pin))
 
 void uiConfig(void);
+void blink(u8 led, u16 time);
 
 #endif //TRZEWIKODZIOB_UI_H
