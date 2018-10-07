@@ -16,10 +16,11 @@ volatile bool isRace = false;
 u16 sensors[12];
 bool sensBool[12];
 
-s8 weights[12] = {-6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6};    // TODO read from settings
+s16 weights[12] = {-60, -50, -40, -30, -20, -10, 10, 20, 30, 40, 50, 60};    // TODO read from settings
 s32 speed = (953635<<1);    // 1m/s, TODO read from settings
 
 void race() {
+    updateError();
     isRace = true;
     while (1) {  // TODO end condition
         updateError();
@@ -33,6 +34,7 @@ void race() {
 void updateError() {
     static s16 prevError = 0;
     static bool noSensFlag = false;
+
     getSensors(sensors);    // TODO continuous reads
     for (u8 i = 0; i < 12; i++) {
         sensBool[i] = (sensors[i] > BLACK_THRESHOLD);
