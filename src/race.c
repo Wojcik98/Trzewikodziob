@@ -4,6 +4,7 @@
 
 #include <stm32f4xx.h>
 #include <stdbool.h>
+#include "motors.h"
 #include "math.h"
 #include "pid.h"
 #include "sensors.h"
@@ -20,13 +21,16 @@ bool sensBool[12];
 void race() {
     updateError();
     isRace = true;
-    while (1) {  // TODO end condition
+
+    while (!(SW_1 || SW_2 || SW_3)) {
         updateError();
         if (getBatt() < BATT_THRESHOLD) {
             LED_2_ON;
         }
     }
+
     isRace = false;
+    setPwm(0, 0);
 }
 
 void updateError() {
