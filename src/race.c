@@ -10,14 +10,12 @@
 #include "menu.h"
 #include "ui.h"
 #include "race.h"
+#include "settings.h"
 
 volatile bool isRace = false;
 
 u16 sensors[12];
 bool sensBool[12];
-
-s16 weights[12] = {-60, -50, -40, -30, -20, -10, 10, 20, 30, 40, 50, 60};    // TODO read from settings
-s32 speed = (953635<<1);    // 1m/s, TODO read from settings
 
 void race() {
     updateError();
@@ -54,10 +52,10 @@ void updateError() {
     }
 
     if (sensCnt == 0 && !noSensFlag) {  // Slow down if out of line
-        setSpeed(speed >> 1);
+        setSpeed(set_targetVTr_16 >> 1);
         noSensFlag = true;
     } else if (noSensFlag && isLineInCenter()) {
-        setSpeed(speed);
+        setSpeed(set_targetVTr_16);
         noSensFlag = false;
     }
 

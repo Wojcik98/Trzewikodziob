@@ -10,5 +10,6 @@
 void pid(void);
 void setSpeed(s32 speed);
 void rotate(s32 rotation);
+void applySettings();
 
 #endif //TRZEWIKODZIOB_PID_H

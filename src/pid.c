@@ -7,17 +7,9 @@
 #include "motors.h"
 #include "pid.h"
 #include "sensors.h"
-
-s16 regPTr = 100;
-s16 regDTr = 0;
-
-s16 regPRot = 100;
-s16 regDRot = 0;
-
-#define V_ROT (1<<20)
+#include "settings.h"
 
 volatile u8 run = 0;
-volatile u8 save = 0;
 
 volatile s32 pwmL = 0, pwmR = 0;
 volatile s32 targetVTr_16 = 0;
@@ -25,9 +17,9 @@ volatile s32 currVTr_16 = 0;
 volatile s32 accTr_16 = 0;
 volatile s32 zadSTr = 0;
 
-volatile s32 targetVRot_16 = V_ROT;
+volatile s32 targetVRot_16 = 0;
 volatile s32 currVRot_16 = 0;
-volatile s32 accRot_16 = 1 << 16;
+volatile s32 accRot_16 = 0;
 volatile s32 zadSRot = 0;
 volatile s32 targetSRot = 0;
 
@@ -48,7 +40,7 @@ void translation() {
 }
 
 void rotation() {
-    targetVRot_16 = V_ROT;
+    targetVRot_16 = set_targetVRot_16;
     if (currVRot_16 * (currVRot_16 >> 16) / (2 * accRot_16) >= abs(targetSRot - zadSRot)) {
         targetVRot_16 = 0;
     }
@@ -102,4 +94,12 @@ void setSpeed(s32 speed) {
 
 void rotate(s32 rotation) {
     targetSRot = enkRot + rotation;
+}
+
+void applySettings() {
+    targetVTr_16 = set_targetVTr_16;
+    accTr_16 = set_accTr_16;
+
+    targetVRot_16 = set_targetVRot_16;
+    accRot_16 = set_accRot_16;
 }
